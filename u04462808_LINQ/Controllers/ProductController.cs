@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using u04462808_LINQ.Models;
 
 namespace u04462808_LINQ.Controllers
 {
@@ -65,20 +66,23 @@ namespace u04462808_LINQ.Controllers
         // After doing so you would need to transfer values from from the correct view as well as the ViewModel.
 
 
-        // [HttpPost] // Edited out to avoid duplication error
-        // public ActionResult PriceRange()                     // Complete this line......
-        //    {                                                                                                      
-        // Complete this line......
-        // Complete this line......
+        [HttpPost]
+        public ActionResult PriceRange(int min, int max)
+        {
 
-        // Complete this line......
-        // Complete this line......
-        // Complete this line......
-        // Complete this line......
-        // Complete this line......
-        // Complete this line......
+            List<Product> products = new List<Product>();/*ListRepository.Products.Where(x => x.Prices => min && x.Prices <= max).ToList();*/
+            PriceRangeVM viewModel = new PriceRangeVM
+            {
+                Products = products,
+                Min = min,
+                Max = max
+            };
+            return View("PriceRangeResult", viewModel);                                     
+        }
 
-        // return View( );                                     // Complete this line......
-        //   }
+        public ActionResult PriceRangeResult()
+        {
+            return View();
+        }
     }
 }

@@ -169,6 +169,7 @@
     <Content Include="Views\Product\PriceRange.cshtml" />
     <Content Include="Views\Product\ProductAverages.cshtml" />
     <Content Include="Views\Product\SupplierProductAverage.cshtml" />
+    <Content Include="Views\Product\PriceRangeResult.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

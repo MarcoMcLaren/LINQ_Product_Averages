@@ -1,0 +1,29 @@
+﻿@model u04462808_LINQ.Models.PriceRangeVM
+@{
+    ViewBag.Title = "GradeRangeResults";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Grade Range Results</h2>
+<h4>Showing students with averages between: @Model.Min and @Model.Max </h4>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Averge</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var Product in Model.Products)
+        {
+            <tr>
+                <td>@Product.ProductID</td>
+                <td>@Product.ProductName</td>
+                <td>@Math.Round(Product.Prices.Average(x => x.Price), 2)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
