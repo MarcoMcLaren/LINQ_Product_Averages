@@ -1,4 +1,4 @@
-﻿@model ProductSupplier.Models.SupplierVM
+﻿@model u04462808_LINQ.Models.SupplierVM
 
 @{
     ViewBag.Title = "SupplierProductAverages";
@@ -17,7 +17,7 @@
 <h2>Supplier Average Prices</h2>
 
 <div style="height: 250px; overflow: auto;">
-    <table class="table table-condensed table-hover" ">
+    <table class="table table-condensed table-hover">
         <thead style="position: sticky;top: 0">
             <tr bgcolor="#222222" class="auto-style">
                 <th width="33%">Supplier ID</th>
@@ -26,11 +26,12 @@
             </tr>
         </thead>
         <tbody>
-            @*@foreach (var supplier in Model.Suppliers)*@ @*Update*@
-            @*{*@
+            @foreach (var supplier in Model.Suppliers)
+            {
             <tr>
-                @*<td>@supplier.SupplierID</td>*@   @*Edited out to avoid error*@
-                @*<td>@supplier.Name</td>*@         @*Edited out to avoid error*@
+                <td>@supplier.SupplierID</td>   
+                <td>@supplier.Name</td>  
+                <td>R @Math.Round(Model.ProdSupplier.Where(s => s.SupplierID == supplier.SupplierID).Select(p => p.Price).Average(), 2).ToString("0.00")</td>
 
                 @*Complete this section*@
 
@@ -47,7 +48,7 @@
 
                 @*Complete this section*@
             </tr>
-            @*}*@
+            }
         </tbody>
     </table>
 </div>

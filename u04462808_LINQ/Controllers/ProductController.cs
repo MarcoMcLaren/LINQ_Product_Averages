@@ -30,25 +30,23 @@ namespace u04462808_LINQ.Controllers
 
         // In this section add the relevant code that would access the ProdSupplier list ( you would need to update
         // the necessary model) so as to access the products in the repository. You would need a loop to access the
-        // process in the product. To do this you would need to add a range to the newly created model. After doing
+        // prices in the product. To do this you would need to add a range to the newly created model. After doing
         // so you would need to create a supplier that would receive the values of the suppliers (from the Supplier
         // model), and the return a temporary view model that would be displayed in the appropriate view. 
-
+        
         public ActionResult SupplierProductAverage()
         {
-            // Complete this line......
-            // Complete this line......
-            // Complete this line......
-            // Complete this line......
-            // Complete this line......
-            // Complete this line......
-            // Complete this line......
-            // Complete this line......
-            // Complete this line......
-            // Complete this line......
-            // Complete this line......
-            // Complete this line......
-            return View();                                     // Complete this line......
+            List<ProdSupplier> prodSupplier = new List<ProdSupplier>();
+            foreach (var item in ListRepository.Products)
+            {
+                prodSupplier.AddRange(item.Prices);
+            }
+            SupplierVM viewModel = new SupplierVM
+            {
+               Suppliers = ListRepository.Suppliers,
+               ProdSupplier = prodSupplier
+            };
+            return View(viewModel); 
         }
 
         // Leave the following HTTPGET as is. Do not change links or related items indicated here. 
@@ -70,10 +68,10 @@ namespace u04462808_LINQ.Controllers
         public ActionResult PriceRange(int min, int max)
         {
 
-            List<Product> products = new List<Product>();/*ListRepository.Products.Where(x => x.Prices => min && x.Prices <= max).ToList();*/
+            
             PriceRangeVM viewModel = new PriceRangeVM
             {
-                Products = products,
+                Products = ListRepository.Products.Where(x => x.Prices.Average(y => y.Price) >= min && x.Prices.Average(y => y.Price) <= max).ToList(),
                 Min = min,
                 Max = max
             };

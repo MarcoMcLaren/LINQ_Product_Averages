@@ -7,7 +7,8 @@ namespace u04462808_LINQ.Models
 {
     public class SupplierVM
     {
-        public List<Supplier> Supplier { get; set; }
+        public List<Supplier> Suppliers { get; set; }
         public List<ProdSupplier> ProdSupplier { get; set; }
+        
     }
 }

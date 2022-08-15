@@ -31,7 +31,7 @@
             <tr>
                 <td>@product.ProductID</td> 
                 <td>@product.ProductName</td> 
-                <td>@Math.Round(product.Prices.Average(x => x.Price), 2)</td>
+                <td>@Math.Round(product.Prices.Average(x => x.Price), 2)</td> <!--Prices is die naam van n list, en binne in die list is Price-->
             </tr>
              } 
         </tbody>
