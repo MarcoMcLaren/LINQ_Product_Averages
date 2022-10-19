@@ -11,4 +11,5 @@ namespace u04462808_LINQ.Models
         public int Min { get; set; }
         public int Max { get; set; }
     }
+    
 }
